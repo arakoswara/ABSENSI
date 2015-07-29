@@ -53,16 +53,6 @@ switch($_GET[act]){
 					}
 					?>
 				</div>
-				<div class="form-group">
-					<label>Jam Pelajaran Ke <span class="text-danger">*</span></label>
-					<select name="jam" class="form-control">
-						<option value="1">Jam Ke - 1</option>
-						<option value="2">Jam Ke - 2</option>
-						<option value="3">Jam Ke - 3</option>
-						<option value="4">Jam Ke - 4</option>
-						<option value="5">Jam Ke - 5</option>
-					</select>
-				</div>
 				<div class="form-group form-actions">
 					<button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-check"></i> Submit</button>
 					<button type="reset" class="btn btn-sm btn-danger pull-right" onclick="self.history.back()"><i class="fa fa-times"></i> Cancel</button>
@@ -87,24 +77,29 @@ switch($_GET[act]){
 						<th>Kelas</th>
 						<th>Keterangan</th>
 						<th>Jam</th>
+						<th>Tanggal</th>
 					</tr>
 				</thead>
+				<tbody>
 				<?php
-				echo $id_siswa = $_SESSION['id_siswa'];
+				$id_siswa = $_SESSION['id_siswa'];
 				$tablecats = new PoTable("absen");
 				$cats = $tablecats->findBy(id_siswa,$id_siswa);
 				$numcats = $tablecats->numRow();
 				$no = 1;
 					if ($numcats > 0){
 						foreach($cats as $cat){
-							echo "<tbody><tr><td>$no</td>";
-							echo "<td> $cats->id_siswa </td>";
-							echo "<td> $cats->kelas </td>";
-							echo "<td> $cats->ket </td>";
-							echo "<td> $cats->jam </td></tbody>";
+							echo "<tr><td>$no</td>";
+							echo "<td> $cat->id_siswa </td>";
+							echo "<td> $cat->kelas </td>";
+							echo "<td> $cat->ket </td>";
+							echo "<td> $cat->jam </td>";
+							echo "<td> $cat->tgl </td></tr>";
+							$no++;
 						}
 					}
 				?>
+				</tbody>
 			</table>
 		</div>
 	</div>

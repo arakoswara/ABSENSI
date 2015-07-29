@@ -12,7 +12,7 @@ $currentRoleAccess = $currentRoleAccess->current();
 
 if($currentRoleAccess->read_access == "Y"){
 
-    $aColumns = array( 'id_kelas','kelas' );
+    $aColumns = array( 'id_kelas', 'kelas' );
 
     $sIndexColumn = "id_kelas";
 
@@ -134,8 +134,8 @@ if($currentRoleAccess->read_access == "Y"){
 			$row[] = $aRow['id_kelas'];
             $row[] = $aRow['kelas'];
 			$row[] = "<div class='text-center'><div class='btn-group btn-group-xs'>
-                    <a href='admin.php?mod=kelas&act=edit&id=$aRow[id_kelas]' class='btn btn-xs btn-default' id='$aRow[id_kelas]'><i class='fa fa-pencil'></i></a>
-                    $tbldelete
+					<a href='admin.php?mod=kelas&act=edit&id=$aRow[id_kelas]' class='btn btn-xs btn-default' id='$aRow[id_kelas]'><i class='fa fa-pencil'></i></a>
+					$tbldelete
 			</div></div>";
         }
         $output['aaData'][] = $row;
